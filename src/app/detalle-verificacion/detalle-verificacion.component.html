@@ -1,4 +1,75 @@
-<p>
-  detalle-verificacion works!
-</p>
-  <h1>{{algo}}</h1>
+
+<form class="pure-form pure-form-stacked" action="action_page.php">
+  
+  <fieldset>
+    <h3 class="izq pegadoabajo"><em>Solicitud:</em></h3>
+<div class="pure-g izq">
+  <div class="pure-u-3-5">
+    <label for="cmb-solicitante">Solicitante:</label><input id="first-name" class="pure-u-23-24 h1lin" type="text">
+  </div>
+  <div class="pure-u-1-5">
+    <label for="cmb-fecha">Fecha:</label><input id="first-fecha" class="pure-u-23-24 h1lin" type="date" required>
+  </div>
+  <div class="pure-u-1-5">
+    <label for="cmb-tipo">Tipo:</label>
+    <select class="pure-u-23-24 h1lin" [ngModel]="selectedTipo" (ngModelChange)="onCTipo($event)" name="cmbTipo">
+      <option [ngValue]="i" *ngFor="let i of tiposVerificacion">{{i.nombre}}</option>
+    </select>
+  </div> 
+</div>
+
+<div class="pure-g izq">
+  <div class="pure-u-1-3">
+    <label for="cmb-municipio">Municipio:</label>
+    <select class="pure-u-23-24 h1lin" [ngModel]="selectedMunicipio" (ngModelChange)="onCMunicipio($event)" name="cmbMunicipio">
+      <option [ngValue]="i" *ngFor="let i of municipios">{{i.nombre}}</option>
+    </select>
+      <!-- {{selectedMunicipio | json}} -->
+    <!-- <input id="first-name" class="pure-u-23-24 h1lin" type="text"> -->
+  </div>
+  <div class="pure-u-1-3">
+    <label for="cmb-parroquia">Parroquia:</label>
+    <select [disabled]="!enableParroquia" class="pure-u-23-24 h1lin" [ngModel]="selectedParroquia" (ngModelChange)="onCParroquia($event)" name="cmbParroquia">
+      <option [ngValue]="i" *ngFor="let i of parroquias">{{i.nombre | parroquiaPipe : queMun}}</option>
+    </select>
+  </div>
+  <div class="pure-u-1-3">
+    <label for="cmb-ourc">Oficina de Registro Civil:</label><input id="first-tipo" class="pure-u-23-24 h1lin" type="text">
+  </div> 
+</div>
+  </fieldset>
+
+  <fieldset>
+    <h3 class="izq pegadoabajo"><em>Resultado:</em></h3>
+    <div class="pure-g izq">
+      <div class="pure-u-2-5">
+        <label for="cmb-fecha">Fiscal:</label><input id="first-name" class="pure-u-23-24 h1lin" type="text">
+    </div>
+    <div class="pure-u-1-5">
+      <label for="cmb-fiscal">Fecha:</label><input id="first-fecha" class="pure-u-23-24 h1lin" type="date" required>
+    </div>
+    <div class="pure-u-1-5">
+      <label for="cmb-posneg">Resultado:</label><input id="first-tipo" class="pure-u-23-24 h1lin" type="text">
+    </div> 
+    <div class="pure-u-1-5">
+      <label for="nro_oficio">Nro. Oficio:</label><input id="first-tipo" class="pure-u-23-24 h1lin" type="text">
+    </div>
+  </div>
+
+    <div class="pure-g izq">
+      <div class="pure-u-1">
+      <label for="text-observacion">Observacion:</label><textarea id="first-tipo" class="pure-u-24-24"></textarea>
+      </div>
+    </div>
+
+    
+  </fieldset>
+<div class="pure-g">
+      <div class="pure-u-3-4">
+        
+      </div>
+      <div class="pure-u-1-4 up10">
+        <button type="submit" class="pure-button pure-button-primary">Guardar</button>
+      </div>
+    </div>
+</form>
