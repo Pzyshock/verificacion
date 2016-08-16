@@ -1,5 +1,6 @@
 export class RCivil {
     id: number;
+    id_parroquia: number;
     nombre: string;
 }
 

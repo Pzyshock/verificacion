@@ -6,9 +6,12 @@ import { Municipio, Parroquia } from './clases';
 })
 export class ParroquiaPipe implements PipeTransform {
 
-  transform(value: Parroquia[], args?: any): any {
-    return value.filter((item)=>{item.id_municipio=args)} ;
+  transform(value: Parroquia, args?: any): any {
+    
+    if (args == value.id_municipio) {return value.nombre;} else {return null}
+
    // return value.filter((item)=>item.) ;
+
   }
 
 }

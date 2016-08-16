@@ -21,20 +21,26 @@
 <div class="pure-g izq">
   <div class="pure-u-1-3">
     <label for="cmb-municipio">Municipio:</label>
-    <select class="pure-u-23-24 h1lin" [ngModel]="selectedMunicipio" (ngModelChange)="onCMunicipio($event)" name="cmbMunicipio">
-      <option [ngValue]="i" *ngFor="let i of municipios">{{i.nombre}}</option>
+    <select class="pure-u-23-24 h1lin" [(ngModel)]="selectedMunicipioId" (change)="onCMunicipio($event.target.value)" name="cmbMunicipio">
+      <option *ngFor="#municipio of municipios" value= {{municipio.id}}>{{municipio.nombre}}</option>
     </select>
       <!-- {{selectedMunicipio | json}} -->
     <!-- <input id="first-name" class="pure-u-23-24 h1lin" type="text"> -->
   </div>
   <div class="pure-u-1-3">
     <label for="cmb-parroquia">Parroquia:</label>
-    <select [disabled]="!enableParroquia" class="pure-u-23-24 h1lin" [ngModel]="selectedParroquia" (ngModelChange)="onCParroquia($event)" name="cmbParroquia">
-      <option [ngValue]="i" *ngFor="let i of parroquias">{{i.nombre | parroquiaPipe : queMun}}</option>
+    <select [disabled]="!enableParroquia" class="pure-u-23-24 h1lin" [(ngModel)]="selectedParroquiaId" (change)="onCParroquia($event.target.value)" name="cmbParroquia">
+      <option *ngFor="#parroquia of parroquias" value={{parroquia.id}}> {{parroquia.nombre}}</option>
     </select>
   </div>
-  <div class="pure-u-1-3">
-    <label for="cmb-ourc">Oficina de Registro Civil:</label><input id="first-tipo" class="pure-u-23-24 h1lin" type="text">
+  <div class="pure-u-1-3">    
+    
+    <label for="cmb-ourc">Oficina de Registro Civil:</label>
+    
+    <select [disabled]="!enableOURC" class="pure-u-23-24 h1lin" [(ngModel)]="selectedOURCId" name="cmbOURC">
+      <option *ngFor="#ourc of ourcs" value={{ourc.id}}> {{ourc.nombre}}</option>
+    </select>
+
   </div> 
 </div>
   </fieldset>
